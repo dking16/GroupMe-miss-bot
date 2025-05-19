@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-GROUPME_BOT_ID = "6c0eda51780232fbaf87826529"
+GROUPME_BOT_ID = "30e8ca05dd8604fb691892efd8"
 TARGET_USER_ID = "64006576"
 
 @app.route('/message-input', methods=['POST'])
@@ -19,7 +19,7 @@ def recieve_message():
         print(f"Received message from target user {TARGET_USER_ID}: '{text}'")
         
         # Prepare to send a message back
-        groupme_api_url = "https://api.groupme.com/v3/bots/post?bot_id=6c0eda51780232fbaf87826529&text=miss"
+        groupme_api_url = "https://api.groupme.com/v3/bots/post?bot_id=30e8ca05dd8604fb691892efd8&text=miss"
 
 
         try:
