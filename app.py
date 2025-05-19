@@ -37,5 +37,7 @@ def recieve_message():
         return jsonify({"status": "ignored", "reason": "not target user"}), 200
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True) # Added debug=True for development
-    # app.run(debug=True)
+    # app.run(host='0.0.0.0', port=5000, debug=True) # Commented out for WSGI
+    # To run with a WSGI server like Gunicorn: gunicorn -w 4 -b 0.0.0.0:5000 wsgi:app
+    # Or with Waitress (Windows or cross-platform): waitress-serve --host 0.0.0.0 --port 5000 wsgi:app
+    pass # The app object is imported by the WSGI server from wsgi.py
