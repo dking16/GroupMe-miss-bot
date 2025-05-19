@@ -4,26 +4,36 @@ import os
 
 app = Flask(__name__)
 
-GROUPME_BOT_ID = "6c0eda51780232fbaf87826529"
-TARGET_USER_ID = "64006576"
+DELTS_27_BOT = "6c0eda51780232fbaf87826529"
+RICE_BOT = "30e8ca05dd8604fb691892efd8"
+DELTS_27_ID = "100792105"
+RICE_ID = "104635793"
+JOHN_ID = "64006576"
+
 
 @app.route('/message-input', methods=['POST'])
 def recieve_message():
     data = request.get_json()
     print(f"Received data: {data}")
     sender_id = data.get("sender_id")
+    group_id = data.get("group_id")
     text = data.get("text")
 
 
-    if sender_id == TARGET_USER_ID:
-        print(f"Received message from target user {TARGET_USER_ID}: '{text}'")
+    if sender_id == JOHN_ID:
+        print(f"Received message from target user {JOHN_ID}: '{text}'")
         
-        # Prepare to send a message back
-        # groupme_api_url = "https://api.groupme.com/v3/bots/post?bot_id=30e8ca05dd8604fb691892efd8&text=miss" # Old incorrect way
+        working_bot = ""
+        
+        if group_id == DELTS_27_ID:
+            working_bot = DELTS_27_BOT
+        if group_id == RICE_ID:
+            working_bot = RICE_BOT
 
+        
         groupme_post_url = "https://api.groupme.com/v3/bots/post"
         payload = {
-            "bot_id": GROUPME_BOT_ID,  # Your bot ID from the top of the file
+            "bot_id": working_bot,  # Your bot ID from the top of the file
             "text": "miss"
         }
 
